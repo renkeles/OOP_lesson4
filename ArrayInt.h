@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARRAYINT_H
+#define ARRAYINT_H
 
 #include <cassert>
 
@@ -8,12 +9,18 @@ private:
     int m_length;
     int* m_data;
 
+    void swap(int* a, int* b) {
+        int tmp = *a;
+        *a = *b;
+        *b = tmp;
+    }
+
 public:
     ArrayInt() : m_length(0), m_data(nullptr)
     { }
 
     ArrayInt(int length) :
-        m_length(length)
+            m_length(length)
     {
         assert(length >= 0);
 
@@ -91,4 +98,45 @@ public:
     }
 
     void push_back(int value) { insertBefore(value, m_length); }
+
+    void print(){
+        for(int i = 0; i < m_length; i++){
+            std::cout << m_data[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    void sort(){
+        for(int i = 1; i < m_length; i++){
+            int k = i;
+            while(k > 0 && m_data[k - 1] < m_data[k]){
+                swap(&m_data[k], &m_data[k - 1]);
+                k -= 1;
+            }
+        }
+    }
+
+    int pop_front(){
+        if(m_length == 0) return 0;
+
+        int tmp = m_data[0];
+        for(int i = 0; i < m_length - 1; i++){
+            swap(&m_data[i], &m_data[i + 1]);
+        }
+        --m_length;
+        return tmp;
+    }
+
+    int pop_back(){
+        if(m_length == 0) return 0;
+
+        int tmp = m_data[m_length - 1];
+        --m_length;
+        return tmp;
+    }
+
 };
+
+
+
+#endif
