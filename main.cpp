@@ -25,6 +25,13 @@ void task1() {
     }
 }
 
+void swap(int* a, int* b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+
 void task2() {
     std::vector<int> array;
     for (int i = 0; i < 10; i++) {
@@ -34,8 +41,14 @@ void task2() {
         std::cout << *i << " ";
     }
     std::cout << std::endl;
-    std::sort(array.begin(), array.end());
-
+    //std::sort(array.begin(), array.end());
+    for (int i = 1; i < array.size(); i++) {
+        int k = i;
+        while (k > 0 && array.at(k - 1) < array.at(k)) {
+            swap(&array.at(k), &array.at(k - 1));
+            k -= 1;
+        }
+    }
     for (std::vector<int>::const_iterator i = array.begin(); i != array.end(); ++i) {
         std::cout << *i << " ";
     }
@@ -47,8 +60,8 @@ void task2() {
 
 int main() {
 
-    task1();
-    //task2();
+    //task1();
+    task2();
 
 
     return 0;
