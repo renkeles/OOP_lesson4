@@ -3,6 +3,8 @@
 #include <algorithm>
 #include "ArrayInt.h"
 
+
+
 void task1() {
     ArrayInt arrayInt;
     std::cout << arrayInt.getLength() << std::endl;
@@ -75,7 +77,7 @@ void task2() {
 int main() {
 
     //task1();
-    task2();
+    //task2();
 
 
     return 0;
