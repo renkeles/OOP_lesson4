@@ -20,7 +20,7 @@ public:
     { }
 
     ArrayInt(int length) :
-        m_length(length)
+            m_length(length)
     {
         assert(length >= 0);
 
@@ -124,7 +124,7 @@ public:
         for (int i = 1; i < m_length; ++i) {
             data[i - 1] = m_data[i];
         }
-        
+
         delete[] m_data;
         m_data = data;
         --m_length;
