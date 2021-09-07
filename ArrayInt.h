@@ -20,7 +20,7 @@ public:
     { }
 
     ArrayInt(int length) :
-            m_length(length)
+        m_length(length)
     {
         assert(length >= 0);
 
@@ -99,38 +99,49 @@ public:
 
     void push_back(int value) { insertBefore(value, m_length); }
 
-    void print(){
-        for(int i = 0; i < m_length; i++){
+    void print() {
+        for (int i = 0; i < m_length; i++) {
             std::cout << m_data[i] << " ";
         }
         std::cout << std::endl;
     }
 
-    void sort(){
-        for(int i = 1; i < m_length; i++){
+    void sort() {
+        for (int i = 1; i < m_length; i++) {
             int k = i;
-            while(k > 0 && m_data[k - 1] < m_data[k]){
+            while (k > 0 && m_data[k - 1] < m_data[k]) {
                 swap(&m_data[k], &m_data[k - 1]);
                 k -= 1;
             }
         }
     }
 
-    int pop_front(){
-        if(m_length == 0) return 0;
-
+    int pop_front() {
+        if (m_length == 0) return 0;
         int tmp = m_data[0];
-        for(int i = 0; i < m_length - 1; i++){
-            swap(&m_data[i], &m_data[i + 1]);
+        int* data = new int[m_length - 1];
+
+        for (int i = 1; i < m_length; ++i) {
+            data[i - 1] = m_data[i];
         }
+        
+        delete[] m_data;
+        m_data = data;
         --m_length;
         return tmp;
     }
 
-    int pop_back(){
-        if(m_length == 0) return 0;
-
+    int pop_back() {
+        if (m_length == 0) return 0;
         int tmp = m_data[m_length - 1];
+        int* data = new int[m_length - 1];
+
+        for (int i = 0; i < m_length - 1; ++i) {
+            data[i] = m_data[i];
+        }
+
+        delete[] m_data;
+        m_data = data;
         --m_length;
         return tmp;
     }
