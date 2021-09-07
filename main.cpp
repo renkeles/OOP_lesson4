@@ -1,8 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 #include "ArrayInt.h"
-
+#include "Hand.h"
 
 
 void task1() {
@@ -74,11 +77,30 @@ void task2() {
 
 }
 
+void task3(){
+    Suit suit = Suit::DIAMOND;
+    Value value = Value::TEN;
+    Card card(suit,value,1);
+    Hand hand;
+    hand.Add(&card);
+    std::cout << hand.GetTotal() << std::endl;
+
+    std::cout << std::endl;
+
+    Suit suit1 = Suit::CLUB;
+    Value value1 = Value::ACE;
+    Card card1(suit1, value1, 1);
+    hand.Add(&card1);
+    std::cout << hand.GetTotal() << std::endl;
+
+    hand.Clear();
+}
+
 int main() {
 
     //task1();
     //task2();
-
+    //task3();
 
     return 0;
 }
