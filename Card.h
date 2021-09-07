@@ -1,25 +1,25 @@
 #pragma once
 
 enum class Suit { //Масть карты (трефы, бубны, червы и пики)
-    HEART,
-    DIAMOND,
-    CLUB,
-    SPADE
+    HEART = 0,
+    DIAMOND = 1,
+    CLUB = 2,
+    SPADE = 3
 };
 enum class Value{ // Значение карты (туз, двойка, тройка и так долее)
-    KING,
-    QUEEN,
-    JACK,
-    TEN,
-    NINE,
-    EIGHT,
-    SEVEN,
-    SIX,
-    FIVE,
-    FOUR,
-    THREE,
-    TWO,
-    ACE
+    TWO = 2,
+    THREE = 3,
+    FOUR = 4,
+    FIVE = 5,
+    SIX = 6,
+    SEVEN = 7,
+    EIGHT = 8,
+    NINE = 9,
+    TEN = 10,
+    ACE = 11,
+    JACK = 12,
+    QUEEN = 13,
+    KING = 14
 };
 
 class Card {
@@ -41,6 +41,8 @@ public:
 
     bool setFaceDown(bool faceDown) {
         _faceDown = faceDown;
+
+        return _faceDown;
     }
 
     bool Flip(Card& card) { //Переворачивает карту. Может использоваться для того, чтобы перевернуть карту лицом вверх или вниз
