@@ -32,13 +32,23 @@ void swap(int& a, int& b) {
 }
 
 void sort(std::vector<int>& array) {
-    for (int i = 1; i < array.size(); i++) {
+    for (int i = 1; i < array.size(); ++i) {
         int k = i;
         while (k > 0 && array.at(k - 1) < array.at(k)) {
             swap(array.at(k), array.at(k - 1));
             k -= 1;
         }
     }
+}
+
+int uniqVector(std::vector<int>& array) {
+    int result = 1;
+    for (int i = 0; i < array.size() - 1; ++i) {
+        if (array.at(i) != array.at(i + 1)) {
+            ++result;
+        }
+    }
+    return result;
 }
 
 void task2() {
@@ -56,8 +66,9 @@ void task2() {
         std::cout << *i << " ";
     }
     std::cout << std::endl;
-    int result = std::unique(array.begin(), array.end()) - array.begin();
-    std::cout << result << std::endl;
+    std::cout << uniqVector(array) << std::endl;
+    //int result = std::unique(array.begin(), array.end()) - array.begin();
+    //std::cout << result << std::endl;
 
 }
 
